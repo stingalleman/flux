@@ -15,6 +15,13 @@ spec:
           main:
             image:
               tag: v3.0.3
+            resources:
+              requests:
+                memory: 512Mi
+                cpu: 1000m
+              limits:
+                memory: 2Gi
+                cpu: 2500m
             env:
               DB_PASSWORD:
                 valueFrom:
@@ -69,6 +76,15 @@ spec:
 
     server:
       enabled: true
+      controllers:
+        main:
+          resources:
+            requests:
+              memory: 512Mi
+              cpu: 1000m
+            limits:
+              memory: 2Gi
+              cpu: 2500m
 
     machine-learning:
       enabled: false

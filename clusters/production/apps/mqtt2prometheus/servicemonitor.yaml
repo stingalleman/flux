@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: mqtt2prometheus
+  namespace: monitoring
+spec:
+  endpoints:
+    - interval: 500ms
+      port: metrics
+  selector:
+    matchLabels:
+      app: mqtt2prometheus

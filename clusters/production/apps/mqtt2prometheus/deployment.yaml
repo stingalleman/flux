@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.0-standalone-strict/deployment-apps-v1.json
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mqtt2prometheus
+  namespace: monitoring
+  labels:
+    app: mqtt2prometheus
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: mqtt2prometheus
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mqtt2prometheus
+    spec:
+      containers:
+        - name: mqtt2prometheus
+          image: ghcr.io/hikhvar/mqtt2prometheus:v0.1.8-RC2
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: 1000m
+          ports:
+            - containerPort: 9641
+              name: metrics
+          volumeMounts:
+            - name: config
+              mountPath: /config.yaml
+              subPath: config.yaml
+      volumes:
+        - name: config
+          secret:
+            secretName: mqtt2prometheus-config

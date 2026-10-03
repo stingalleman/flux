@@ -25,6 +25,8 @@ spec:
     cephClusterSpec:
       external:
         enable: true
+      cephVersion:
+        image: quay.io/ceph/ceph:v20.2.0
       crashCollector:
         disable: true
       healthCheck:

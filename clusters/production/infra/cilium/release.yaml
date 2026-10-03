@@ -14,6 +14,9 @@ spec:
         namespace: flux-system
   interval: 24h
   values:
+    cni:
+      exclusive: false
+
     bgpControlPlane:
       enabled: true
 
@@ -59,8 +62,5 @@ spec:
           - SYS_RESOURCE
     ipv6:
       enabled: true
-
-    bpf:
-      masquerade: true
-    egressGateway:
-      enabled: true
+    socketLB:
+      hostNamespaceOnly: true

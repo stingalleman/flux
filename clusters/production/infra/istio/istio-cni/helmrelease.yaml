@@ -11,7 +11,7 @@ spec:
         kind: HelmRepository
         name: istio-release
         namespace: istio-system
-      version: "1.30.4"
+      version: "1.30.5"
   interval: 24h
   values:
     profile: ambient

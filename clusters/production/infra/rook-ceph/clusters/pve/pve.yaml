@@ -26,7 +26,7 @@ spec:
       external:
         enable: true
       cephVersion:
-        image: quay.io/ceph/ceph:v20.2.0
+        image: quay.io/ceph/ceph:v21.1.1@sha256:83e05d630bfb7641d1d032f8cdfe1f715a158f3d283c8173d00b7e58430d3b72
       crashCollector:
         disable: true
       healthCheck:

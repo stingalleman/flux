@@ -1,19 +1,19 @@
 apiVersion: ceph.rook.io/v1
 kind: CephObjectStoreUser
 metadata:
-  name: loki
+  name: loki-k8s
   namespace: monitoring
 spec:
   store: k8s-objectstore-ssd
-  displayName: loki
+  displayName: loki-k8s
 ---
 apiVersion: objectbucket.io/v1alpha1
 kind: ObjectBucketClaim
 metadata:
-  name: loki
+  name: loki-k8s
   namespace: monitoring
 spec:
-  generateBucketName: loki
+  generateBucketName: loki-k8s
   storageClassName: ceph-objectstore-ssd-pve
   additionalConfig:
-    bucketOwner: "loki"
+    bucketOwner: "loki-k8s"

@@ -1,7 +1,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: s3.kluster.i.as216455.net
+  name: s3.i.as216455.net
   namespace: traefik
 spec:
   entryPoints:
@@ -9,17 +9,19 @@ spec:
     - internalsecure
   routes:
     - kind: Rule
-      match: Host(`s3.kluster.i.as216455.net`)
+      match: Host(`s3.i.as216455.net`)
       services:
-        - name: rook-ceph-rgw-ceph-objectstore
-          namespace: rook-ceph
-          port: 80
+        - kind: Service
+          name: ceph-rgw
+          namespace: traefik
+          port: 7480
     - kind: Rule
-      match: HostRegexp(`^.+\.s3\.kluster\.i\.as216455\.net$`)
+      match: HostRegexp(`^.+\.s3\.i\.as216455\.net$`)
       services:
-        - name: rook-ceph-rgw-ceph-objectstore
-          namespace: rook-ceph
-          port: 80
+        - kind: Service
+          name: ceph-rgw
+          namespace: traefik
+          port: 7480
 
   tls:
-    secretName: s3.kluster.i.as216455.net-prod-tls
+    secretName: s3.i.as216455.net-prod-tls

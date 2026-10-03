@@ -139,14 +139,6 @@ spec:
           port: http
 
     - kind: Rule
-      match: Host(`s3.i.as216455.net`)
-      services:
-        - kind: Service
-          name: ceph-rgw
-          namespace: traefik
-          port: 7480
-
-    - kind: Rule
       match: Host(`litellm.i.as216455.net`)
       services:
         - kind: Service

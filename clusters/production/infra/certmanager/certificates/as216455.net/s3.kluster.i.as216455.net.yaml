@@ -1,14 +1,14 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: s3.kluster.i.as216455.net
+  name: s3.i.as216455.net
   namespace: traefik
 spec:
-  secretName: s3.kluster.i.as216455.net-prod-tls
+  secretName: s3.i.as216455.net-prod-tls
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
-  commonName: "*.s3.kluster.i.as216455.net"
+  commonName: "*.s3.i.as216455.net"
   dnsNames:
-    - "s3.kluster.i.as216455.net"
-    - "*.s3.kluster.i.as216455.net"
+    - "s3.i.as216455.net"
+    - "*.s3.i.as216455.net"

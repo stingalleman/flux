@@ -634,7 +634,7 @@ spec:
     housekeeping:
       ## @param housekeeping.enabled Enable housekeeping job
       ##
-      enabled: true
+      enabled: false
 
     ## @section Worker for Netbox parameters
 

@@ -1,5 +1,5 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: postgres-operator
@@ -8,7 +8,7 @@ spec:
   interval: 24h0m0s
   url: https://opensource.zalando.com/postgres-operator/charts/postgres-operator
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: postgres-operator-ui

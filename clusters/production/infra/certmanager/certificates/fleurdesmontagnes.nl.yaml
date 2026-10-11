@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fleurdesmontagnes.nl
+  namespace: traefik
+spec:
+  secretName: fleurdesmontagnes.nl-prod-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: "fleurdesmontagnes.nl"
+  dnsNames:
+    - "fleurdesmontagnes.nl"
+    - "*.fleurdesmontagnes.nl"

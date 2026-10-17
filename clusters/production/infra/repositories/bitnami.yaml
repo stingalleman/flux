@@ -1,4 +1,4 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
   name: bitnami-wordpress-oci
@@ -12,7 +12,7 @@ spec:
     semver: "29.2.0"
 
 # ---
-# apiVersion: source.toolkit.fluxcd.io/v1beta2
+# apiVersion: source.toolkit.fluxcd.io/v1
 # kind: OCIRepository
 # metadata:
 #   name: slybase-wordpress-oci
@@ -23,7 +23,7 @@ spec:
 #   interval: 10m
 #   url: oci://ghcr.io/slybase/charts/wordpress
 # ---
-# apiVersion: source.toolkit.fluxcd.io/v1beta2
+# apiVersion: source.toolkit.fluxcd.io/v1
 # kind: HelmRepository
 # metadata:
 #   name: slybase-oci-charts
@@ -34,7 +34,7 @@ spec:
 #   url: oci://ghcr.io/slybase/charts
 #   # ref:
 #   #   semver: ">6.0.0"
-# # apiVersion: source.toolkit.fluxcd.io/v1beta2
+# # apiVersion: source.toolkit.fluxcd.io/v1
 # # kind: HelmRepository
 # # metadata:
 # #   name: bitnami
@@ -42,7 +42,7 @@ spec:
 # # spec:
 # #   interval: 24h
 # #   url: https://charts.bitnami.com/bitnami
-# # apiVersion: source.toolkit.fluxcd.io/v1beta2
+# # apiVersion: source.toolkit.fluxcd.io/v1
 # # kind: OCIRepository
 # # metadata:
 # #   name: bitnami-wordpress

@@ -11,7 +11,7 @@ spec:
         kind: HelmRepository
         name: authentik
         namespace: flux-system
-      version: "2026.8.4"
+      version: "2026.5.0"
   interval: 24h
   valuesFrom:
     - kind: Secret

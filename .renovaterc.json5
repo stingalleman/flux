@@ -37,5 +37,15 @@
   kubernetes: {
     // managerFilePatterns: ["/\\.yaml(?:\\.j2)?$/"],
     managerFilePatterns: ["/\\.ya?ml$/"],
-  }
+  },
+  packageRules: [
+  {
+    description: "Staged cert-manager upgrade path",
+    matchManagers: ["flux"],
+    matchDatasources: ["helm"],
+    matchPackageNames: ["cert-manager"],
+    allowedVersions: "<{{major}}.{{add minor 2}}.0",
+    automerge: false,
+  },
+],
 }

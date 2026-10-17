@@ -311,6 +311,7 @@ spec:
       - name: k8s-cephfs-ssd
         # see https://github.com/rook/rook/blob/master/Documentation/CRDs/Shared-Filesystem/ceph-filesystem-crd.md#filesystem-settings for available configuration
         spec:
+          preserveFilesystemOnDelete: true
           metadataPool:
             failureDomain: osd
             replicated:
@@ -349,6 +350,7 @@ spec:
       - name: k8s-cephfs-hdd-unreplicated
         # see https://github.com/rook/rook/blob/master/Documentation/CRDs/Shared-Filesystem/ceph-filesystem-crd.md#filesystem-settings for available configuration
         spec:
+          preserveFilesystemOnDelete: true
           metadataPool:
             failureDomain: osd
             replicated:

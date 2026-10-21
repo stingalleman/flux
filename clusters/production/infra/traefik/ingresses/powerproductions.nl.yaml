@@ -7,22 +7,7 @@ spec:
   entryPoints:
     - web
     - websecure
-  routes:
-    - kind: Rule
-      match: Host(`powerproductions.nl`) || Host(`www.powerproductions.nl`)
-      services:
-        - kind: Service
-          name: wordpress
-          namespace: default
-          port: 80
-
-    - kind: Rule
-      match: Host(`dwrg.nl`) || Host(`www.dwrg.nl`)
-      services:
-        - kind: Service
-          name: dwrg-wordpress
-          namespace: wordpress
-          port: 80
+  routes: []
 
   tls:
     secretName: powerproductions.nl-prod-tls

@@ -92,22 +92,6 @@ spec:
           port: http
 
     - kind: Rule
-      match: Host(`grocy.home.stingalleman.nl`)
-      services:
-        - kind: Service
-          name: grocy
-          namespace: grocy
-          port: http
-
-    - kind: Rule
-      match: Host(`grocy-staging.home.stingalleman.nl`)
-      services:
-        - kind: Service
-          name: grocy-staging
-          namespace: grocy
-          port: http
-
-    - kind: Rule
       match: Host(`foto.stingalleman.nl`)
       services:
         - kind: Service

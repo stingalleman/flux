@@ -49,19 +49,19 @@ spec:
     #       namespace: default
     #       port: 3000
 
-    - kind: Rule
-      match: Host(`dns.as216455.net`)
-      services:
-        - name: poweradmin
-          namespace: default
-          port: http
+    #- kind: Rule
+    #  match: Host(`dns.as216455.net`)
+    #  services:
+    #    - name: poweradmin
+    #      namespace: default
+    #      port: http
 
-    - kind: Rule
-      match: Host(`nms.as216455.net`)
-      services:
-        - name: librenms
-          namespace: monitoring
-          port: 8000
+    #- kind: Rule
+    #  match: Host(`nms.as216455.net`)
+    #  services:
+    #    - name: librenms
+    #      namespace: monitoring
+    #      port: 8000
 
     - kind: Rule
       match: Host(`flux-webhook.as216455.net`)

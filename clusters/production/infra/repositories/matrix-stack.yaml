@@ -10,4 +10,4 @@ spec:
   secretRef:
     name: ghcr-auth
   ref:
-    semver: "26.6.2"
+    semver: "26.10.2"

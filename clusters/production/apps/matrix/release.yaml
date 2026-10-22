@@ -167,11 +167,11 @@ spec:
           resources:
             requests:
               memory: 300Mi
-              cpu: 250m
+              cpu: 500m
 
             limits:
               memory: 500Mi
-              cpu: 500m
+              cpu: 1000m
         client-reader:
           enabled: true
           replicas: 4
@@ -750,3 +750,16 @@ spec:
         ## Whether to instruct Helm to keep or delete the constructed PersistentVolumeClaim when uninstalling the chart
         ## Ignored if existingClaim is provided
         resourcePolicy: keep
+
+    valkey:
+      # redis maxmemory and maxmemory-policy settings. See https://redis.io/docs/latest/develop/reference/eviction/
+      # This value should be updated with changes to Valkey's memory requests and limits below
+      maxMemory: 100mb
+      maxMemoryPolicy: allkeys-lru
+
+      resources:
+        requests:
+          memory: 100Mi
+          cpu: 50m
+        limits:
+          memory: 150Mi

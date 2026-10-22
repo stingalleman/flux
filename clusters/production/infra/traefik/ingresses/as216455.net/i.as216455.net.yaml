@@ -139,14 +139,6 @@ spec:
           port: http
 
     - kind: Rule
-      match: Host(`litellm.i.as216455.net`)
-      services:
-        - kind: Service
-          name: litellm
-          namespace: litellm
-          port: 4000
-
-    - kind: Rule
       match: Host(`paperless.i.as216455.net`)
       services:
         - kind: Service

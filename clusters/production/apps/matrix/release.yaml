@@ -26,12 +26,12 @@ spec:
         fsGroupChangePolicy: "OnRootMismatch"
       resources:
         requests:
-          memory: 100Mi
-          cpu: 100m
+          memory: 300Mi
+          cpu: 750m
 
         limits:
-          memory: 6Gi
-          # cpu:
+          memory: 500Mi
+          cpu: 1500m
       livenessProbe:
         ## How many consecutive failures for the probe to be considered failed
         failureThreshold: 50 # 8
@@ -144,57 +144,225 @@ spec:
       workers:
         account-data:
           enabled: true
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         appservice:
           enabled: true
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         background:
           enabled: true
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         client-reader:
           enabled: true
-          replicas: 3
+          replicas: 4
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 750m
+
+            limits:
+              memory: 500Mi
+              cpu: 1500m
         device-lists:
           enabled: true
           replicas: 2
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         encryption:
           enabled: true
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         event-creator:
           enabled: true
           replicas: 2
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         event-persister:
           enabled: true
           replicas: 4
+          resources:
+            requests:
+              memory: 1000Mi
+              cpu: 500m
+
+            limits:
+              memory: 2000Mi
+              cpu: 1000m
         federation-inbound:
           enabled: true
-          replicas: 4
+          replicas: 5
+          resources:
+            requests:
+              memory: 1000Mi
+              cpu: 500m
+
+            limits:
+              memory: 2000Mi
+              cpu: 1000m
         federation-reader:
           enabled: true
           replicas: 4
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         federation-sender:
           enabled: true
           replicas: 4
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         initial-synchrotron:
           enabled: true
           replicas: 2
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         media-repository:
           enabled: true
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         presence-writer:
           enabled: true
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         push-rules:
           enabled: true
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         pusher:
           enabled: true
           replicas: 2
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         receipts:
           enabled: true
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         sliding-sync:
           enabled: true
           replicas: 2
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         synchrotron:
           enabled: true
           replicas: 3
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         typing-persister:
           enabled: true
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
         user-dir:
           enabled: true
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 250m
+
+            limits:
+              memory: 500Mi
+              cpu: 500m
       postgres:
         host: pooler-matrix-rw.cnpg-system
         port: 5432
@@ -256,7 +424,8 @@ spec:
 
         # Allows restricting room creation to local users only
         # Remote federated users can still join the room
-      restrictRoomCreationToLocalUsers: true
+      restrictRoomCreationToLocalUsers:
+        true
         # LiveKit Authentication Configuration
         # This section allows you to configure authentication for the LiveKit SFU.
         # You can either use an existing keys.yaml file or provide a key and secret.
@@ -462,8 +631,8 @@ spec:
       baseDomainRedirect:
         enabled: false
       additional:
-        support: "{ \"contacts\": [{ \"email_address\": \"noc@as216455.net\",
-          \"matrix_id\": \"@sting:maishond.nl\", \"role\": \"m.role.admin\" }]}"
+        support: '{ "contacts": [{ "email_address": "noc@as216455.net",
+          "matrix_id": "@sting:maishond.nl", "role": "m.role.admin" }]}'
 
     haproxy:
       replicas: 3

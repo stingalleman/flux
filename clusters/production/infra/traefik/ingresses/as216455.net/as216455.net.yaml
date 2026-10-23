@@ -92,20 +92,6 @@ spec:
           port: 8088
 
     - kind: Rule
-      match: Host(`actual-koen.as216455.net`)
-      services:
-        - name: actual-budget-koen-service
-          namespace: default
-          port: 5006
-
-    - kind: Rule
-      match: Host(`actual-wouter.as216455.net`)
-      services:
-        - name: actual-budget-wouter-service
-          namespace: default
-          port: 5006
-
-    - kind: Rule
       match: Host(`auth.as216455.net`)
       services:
         - name: authentik-server

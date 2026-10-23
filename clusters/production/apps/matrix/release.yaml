@@ -211,7 +211,7 @@ spec:
               cpu: 1000m
         federation-inbound:
           enabled: true
-          replicas: 5
+          replicas: 3
           resources:
             requests:
               memory: 1000Mi
@@ -221,11 +221,11 @@ spec:
               memory: 2000Mi
               cpu: 1000m
           livenessProbe:
-            failureThreshold: 3
+            failureThreshold: 6
             initialDelaySeconds: 0
             periodSeconds: 10
             successThreshold: 1
-            timeoutSeconds: 5
+            timeoutSeconds: 30
           readinessProbe:
             failureThreshold: 7
             initialDelaySeconds: 0

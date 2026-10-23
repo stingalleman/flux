@@ -184,13 +184,25 @@ spec:
               memory: 1G
         event-persister:
           enabled: true
-          replicas: 4
+          replicas: 2
           resources:
             requests:
               memory: 1000Mi
               cpu: 500m
             limits:
               memory: 2000Mi
+          livenessProbe:
+            failureThreshold: 6
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 60
+          readinessProbe:
+            failureThreshold: 10
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 2
+            timeoutSeconds: 5
         federation-inbound:
           enabled: true
           replicas: 3

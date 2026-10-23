@@ -33,51 +33,22 @@ spec:
           memory: 500Mi
           cpu: 1500m
       livenessProbe:
-        ## How many consecutive failures for the probe to be considered failed
-        failureThreshold: 50 # 8
-
-        ## Number of seconds after the container has started before the probe starts
+        failureThreshold: 3
         initialDelaySeconds: 0
-
-        ## How often (in seconds) to perform the probe
-        periodSeconds: 6 # 6
-
-        ## How many consecutive successes for the probe to be consider successful after having failed
+        periodSeconds: 10
         successThreshold: 1
-
-        ## Number of seconds after which the probe times out
-        timeoutSeconds: 2
-      ## Configuration of the thresholds and frequencies of the readinessProbe
+        timeoutSeconds: 3
       readinessProbe:
-        ## How many consecutive failures for the probe to be considered failed
-        failureThreshold: 150 # 8
-
-        ## Number of seconds after the container has started before the probe starts
+        failureThreshold: 3
         initialDelaySeconds: 0
-
-        ## How often (in seconds) to perform the probe
-        periodSeconds: 2
-
-        ## How many consecutive successes for the probe to be consider successful after having failed
-        successThreshold: 2
-
-        ## Number of seconds after which the probe times out
-        timeoutSeconds: 2
-      ## Configuration of the thresholds and frequencies of the startupProbe
-      startupProbe:
-        ## How many consecutive failures for the probe to be considered failed
-        failureThreshold: 54
-
-        ## Number of seconds after the container has started before the probe starts
-        initialDelaySeconds: 0
-
-        ## How often (in seconds) to perform the probe
-        periodSeconds: 2
-
-        ## How many consecutive successes for the probe to be consider successful after having failed
+        periodSeconds: 10
         successThreshold: 1
-
-        ## Number of seconds after which the probe times out
+        timeoutSeconds: 3
+      startupProbe:
+        failureThreshold: 54
+        initialDelaySeconds: 0
+        periodSeconds: 2
+        successThreshold: 1
         timeoutSeconds: 1
       media:
         storage:
@@ -183,6 +154,18 @@ spec:
             limits:
               memory: 500Mi
               cpu: 1500m
+          livenessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 7
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 2
+            timeoutSeconds: 5
         device-lists:
           enabled: true
           replicas: 2
@@ -237,6 +220,18 @@ spec:
             limits:
               memory: 2000Mi
               cpu: 1000m
+          livenessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 7
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 2
+            timeoutSeconds: 5
         federation-reader:
           enabled: true
           replicas: 4

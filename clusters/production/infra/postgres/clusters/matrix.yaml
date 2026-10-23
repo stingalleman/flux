@@ -16,15 +16,15 @@ spec:
 
   resources:
     requests:
-      memory: "2Gi"
-      cpu: "1500m"
+      memory: "3Gi"
+      cpu: "2000m"
     limits:
-      memory: "4Gi"
-      cpu: "3000m"
+      memory: "6Gi"
+      cpu: "4000m"
   postgresql:
     parameters:
       max_connections: "300"
-      shared_buffers: 384MB
+      shared_buffers: 1GB
       effective_cache_size: 8GB
       work_mem: 64MB
       maintenance_work_mem: 512MB

@@ -64,14 +64,6 @@ spec:
           namespace: traefik
 
     - kind: Rule
-      match: Host(`meet.maishond.nl`)
-      services:
-        - kind: Service
-          name: jitsi-jitsi-meet-web
-          namespace: jitsi
-          port: 80
-
-    - kind: Rule
       match: Host(`chat.maishond.nl`)
       services:
         - kind: Service

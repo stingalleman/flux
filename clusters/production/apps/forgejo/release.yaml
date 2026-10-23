@@ -14,7 +14,7 @@ spec:
       registry: code.forgejo.org
       repository: forgejo/forgejo
       # Overrides the image tag whose default is the chart appVersion.
-      tag: "16.0.5-rootless"
+      tag: "17.0.0-rootless"
       rootless: true
 
     ## @param namespaceOverride String to fully override common.names.namespace

@@ -40,6 +40,12 @@
   },
   packageRules: [
   {
+    description: "Disable digest pinning for the Forgejo Helm release image",
+    matchDatasources: ["docker"],
+    matchFileNames: ["clusters/production/apps/forgejo/release.yaml"],
+    pinDigests: false,
+  },
+  {
     description: "Staged cert-manager upgrade path",
     matchManagers: ["flux"],
     matchDatasources: ["helm"],

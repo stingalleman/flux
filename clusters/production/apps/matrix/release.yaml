@@ -28,10 +28,8 @@ spec:
         requests:
           memory: 300Mi
           cpu: 750m
-
         limits:
           memory: 500Mi
-          cpu: 1500m
       livenessProbe:
         failureThreshold: 3
         initialDelaySeconds: 0
@@ -119,30 +117,24 @@ spec:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
         appservice:
           enabled: true
           resources:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
         background:
           enabled: true
           resources:
             requests:
               memory: 500Mi
               cpu: 500m
-
             limits:
               memory: 1000Mi
-              cpu: 1000m
         client-reader:
           enabled: true
           replicas: 4
@@ -150,10 +142,8 @@ spec:
             requests:
               memory: 300Mi
               cpu: 750m
-
             limits:
               memory: 500Mi
-              cpu: 1500m
           livenessProbe:
             failureThreshold: 3
             initialDelaySeconds: 0
@@ -173,20 +163,16 @@ spec:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
         encryption:
           enabled: true
           resources:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
         event-creator:
           enabled: true
           replicas: 1
@@ -194,10 +180,8 @@ spec:
             requests:
               memory: 500Mi
               cpu: 750m
-
             limits:
               memory: 1G
-              cpu: 1500m
         event-persister:
           enabled: true
           replicas: 4
@@ -205,10 +189,8 @@ spec:
             requests:
               memory: 1000Mi
               cpu: 500m
-
             limits:
               memory: 2000Mi
-              cpu: 1000m
         federation-inbound:
           enabled: true
           replicas: 3
@@ -216,10 +198,8 @@ spec:
             requests:
               memory: 1000Mi
               cpu: 500m
-
             limits:
-              memory: 2000Mi
-              cpu: 1000m
+              memory: 4000Mi
           livenessProbe:
             failureThreshold: 6
             initialDelaySeconds: 0
@@ -239,10 +219,8 @@ spec:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
         federation-sender:
           enabled: true
           replicas: 4
@@ -250,10 +228,8 @@ spec:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
         initial-synchrotron:
           enabled: true
           replicas: 2
@@ -261,40 +237,32 @@ spec:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
         media-repository:
           enabled: true
           resources:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
         presence-writer:
           enabled: true
           resources:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
         push-rules:
           enabled: true
           resources:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
         pusher:
           enabled: true
           replicas: 2
@@ -302,20 +270,16 @@ spec:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
         receipts:
           enabled: true
           resources:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
         sliding-sync:
           enabled: true
           replicas: 2
@@ -323,10 +287,8 @@ spec:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
         synchrotron:
           enabled: true
           replicas: 3
@@ -334,30 +296,24 @@ spec:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
         typing-persister:
           enabled: true
           resources:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
         user-dir:
           enabled: true
           resources:
             requests:
               memory: 300Mi
               cpu: 250m
-
             limits:
               memory: 500Mi
-              cpu: 500m
       postgres:
         host: pooler-matrix-rw.cnpg-system
         port: 5432

@@ -113,15 +113,6 @@ spec:
           port: 80
 
     - kind: Rule
-      match: Host(`login.as216455.net`)
-      services:
-        - name: kanidm
-          namespace: kanidm
-          port: 80
-          scheme: https
-          serversTransport: insecure
-
-    - kind: Rule
       match: Host(`images.as216455.net`)
       services:
         - kind: Service

@@ -66,19 +66,6 @@ spec:
         - name: prometheus-operated
           namespace: monitoring
           port: http-web
-    - kind: Rule
-      match: Host(`dns.i.as216455.net`)
-      services:
-        - name: pdns-admin
-          namespace: default
-          port: 80
-
-    - kind: Rule
-      match: Host(`pgadmin.i.as216455.net`)
-      services:
-        - name: pgadmin4
-          namespace: default
-          port: 5050
 
     - kind: Rule
       match: Host(`netbox.i.as216455.net`)
@@ -88,39 +75,11 @@ spec:
           port: http
 
     - kind: Rule
-      match: Host(`oxidized.i.as216455.net`)
-      services:
-        - name: oxidized
-          namespace: default
-          port: 80
-
-    - kind: Rule
-      match: Host(`spoolman.i.as216455.net`)
-      services:
-        - name: spoolman
-          namespace: default
-          port: 8000
-
-    - kind: Rule
       match: Host(`actual.i.as216455.net`)
       services:
         - name: actual-budget-service
           namespace: default
           port: 5006
-
-    - kind: Rule
-      match: Host(`actual-lucas.i.as216455.net`)
-      services:
-        - name: actual-budget-lucas-service
-          namespace: default
-          port: 5006
-
-    - kind: Rule
-      match: Host(`routinator.i.as216455.net`)
-      services:
-        - name: routinator-vm
-          namespace: traefik
-          port: 8323
 
     - kind: Rule
       match: Host(`krill.i.as216455.net`)
@@ -129,14 +88,6 @@ spec:
           name: krill-http
           namespace: default
           port: 3000
-
-    - kind: Rule
-      match: Host(`ollama.i.as216455.net`)
-      services:
-        - kind: Service
-          name: ollama-service
-          namespace: default
-          port: http
 
     - kind: Rule
       match: Host(`paperless.i.as216455.net`)

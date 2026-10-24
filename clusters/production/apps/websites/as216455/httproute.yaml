@@ -10,7 +10,6 @@ spec:
       namespace: envoy-gateway-system
       kind: ListenerSet
       group: gateway.networking.k8s.io
-      sectionName: https
   hostnames:
     - as216455.net
     - www.as216455.net

@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=file:///Users/sting/.local/share/nvim/yaml-companion.nvim/crd-cache/admin_kluster.boem/httproutes.gateway.networking.k8s.io.json
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: stingalleman-site
+  namespace: default
+spec:
+  parentRefs:
+    - name: stingalleman.nl
+      namespace: envoy-gateway-system
+      kind: ListenerSet
+      group: gateway.networking.k8s.io
+  hostnames:
+    - stingalleman.nl
+    - www.stingalleman.nl
+  rules:
+    - backendRefs:
+        - name: stingalleman-site
+          port: 80

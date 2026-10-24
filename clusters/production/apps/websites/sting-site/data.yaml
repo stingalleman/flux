@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: sting-data
+  name: stingalleman-site-data
   namespace: default
 data:
   index.html: |

@@ -63,6 +63,6 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: monitoring-stack-rafana
+        - name: monitoring-stack-grafana
           port: 80
           kind: Service

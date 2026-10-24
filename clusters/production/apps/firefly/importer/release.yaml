@@ -16,6 +16,16 @@ spec:
   values:
     replicaCount: 1
 
+    httpRoute:
+      enabled: true
+      hostnames:
+        - firefly-importer.i.as216455.net
+      parentRefs:
+        - group: gateway.networking.k8s.io
+          kind: ListenerSet
+          name: i.as216455.net
+          namespace: gateway
+
     # -- The proxies that are trusted by the importer
     trustedProxies: "**"
 
@@ -47,12 +57,6 @@ spec:
       #     name: test.txt
       #     content: |
       #       This is a test file with some content
-
-    httpRoute:
-      enabled: false
-      annotations: {}
-      hostnames: []
-      parentRefs: []
 
     resources:
       limits:

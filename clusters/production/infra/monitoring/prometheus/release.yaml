@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: v91.4.0
+      version: v92.13.1
       chart: kube-prometheus-stack
       sourceRef:
         kind: HelmRepository
@@ -17,7 +17,6 @@ spec:
     crds:
       upgradeJob:
         enabled: true
-        forceConflicts: true
     grafana:
       admin:
         ## Name of the secret. Can be templated.

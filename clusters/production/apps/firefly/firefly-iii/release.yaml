@@ -17,6 +17,16 @@ spec:
     replicaCount: 1
     deploymentStrategyType: RollingUpdate
 
+    httpRoute:
+      enabled: true
+      hostnames:
+        - firefly.i.as216455.net
+      parentRefs:
+        - group: gateway.networking.k8s.io
+          kind: ListenerSet
+          name: i.as216455.net
+          namespace: gateway
+
     persistence:
       enabled: true
       storageClassName: "ceph-fs-ssd-pve"
@@ -68,14 +78,6 @@ spec:
 
       # -- How to treat failed jobs
       restartPolicy: OnFailure
-
-    httpRoute:
-      enabled: false
-      annotations: {}
-      hostnames: []
-      parentRefs: []
-      filters: []
-      additionalRules: []
 
     resources:
       limits:

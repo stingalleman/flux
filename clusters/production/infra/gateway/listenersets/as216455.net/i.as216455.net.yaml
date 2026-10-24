@@ -2,8 +2,8 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: ListenerSet
 metadata:
-  name: as216455.net
-  namespace: envoy-gateway-system
+  name: i.as216455.net
+  namespace: gateway
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
@@ -15,22 +15,22 @@ spec:
     - name: https
       protocol: HTTPS
       port: 443
-      hostname: "as216455.net"
+      hostname: "i.as216455.net"
       allowedRoutes:
         namespaces:
           from: All
       tls:
         mode: Terminate
         certificateRefs:
-          - name: as216455.net-tls-prod
+          - name: i.as216455.net-tls-prod
     - name: https-wildcard
       protocol: HTTPS
       port: 443
-      hostname: "*.as216455.net"
+      hostname: "*.i.as216455.net"
       allowedRoutes:
         namespaces:
           from: All
       tls:
         mode: Terminate
         certificateRefs:
-          - name: as216455.net-tls-prod
+          - name: i.as216455.net-tls-prod

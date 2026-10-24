@@ -2,8 +2,8 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: ListenerSet
 metadata:
-  name: stingalleman.nl
-  namespace: envoy-gateway-system
+  name: as216455.net
+  namespace: gateway
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
@@ -12,29 +12,25 @@ spec:
     kind: Gateway
     group: gateway.networking.k8s.io
   listeners:
-    - name: http
-      protocol: HTTP
-      port: 80
-      hostname: "stingalleman.nl"
     - name: https
       protocol: HTTPS
       port: 443
-      hostname: "stingalleman.nl"
+      hostname: "as216455.net"
       allowedRoutes:
         namespaces:
           from: All
       tls:
         mode: Terminate
         certificateRefs:
-          - name: stingalleman.nl-tls-prod
+          - name: as216455.net-tls-prod
     - name: https-wildcard
       protocol: HTTPS
       port: 443
-      hostname: "*.stingalleman.nl"
+      hostname: "*.as216455.net"
       allowedRoutes:
         namespaces:
           from: All
       tls:
         mode: Terminate
         certificateRefs:
-          - name: stingalleman.nl-tls-prod
+          - name: as216455.net-tls-prod

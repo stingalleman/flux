@@ -2,13 +2,13 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: ReferenceGrant
 metadata:
-  name: ssl-envoy-gateway-system
+  name: gateway-httproute
   namespace: default
 spec:
   from:
     - group: gateway.networking.k8s.io
       kind: ListenerSet
-      namespace: envoy-gateway-system
+      namespace: gateway
   to:
     - group: ""
       kind: HTTPRoute

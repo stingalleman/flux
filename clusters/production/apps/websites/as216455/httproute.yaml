@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=file:///Users/sting/.local/share/nvim/yaml-companion.nvim/crd-cache/admin_kluster.boem/httproutes.gateway.networking.k8s.io.json
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: as216455-site
+  namespace: default
+spec:
+  parentRefs:
+    - name: as216455.net
+      namespace: envoy-gateway-system
+      kind: ListenerSet
+      group: gateway.networking.k8s.io
+      sectionName: https
+  hostnames:
+    - as216455.net
+    - www.as216455.net
+  rules:
+    - backendRefs:
+        - name: as216455-site
+          port: 80

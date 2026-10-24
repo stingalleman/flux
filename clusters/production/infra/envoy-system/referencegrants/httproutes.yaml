@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=file:///Users/sting/.local/share/nvim/yaml-companion.nvim/crd-cache/admin_kluster.boem/referencegrants.gateway.networking.k8s.io.json
+apiVersion: gateway.networking.k8s.io/v1
+kind: ReferenceGrant
+metadata:
+  name: ssl-envoy-gateway-system
+  namespace: default
+spec:
+  from:
+    - group: gateway.networking.k8s.io
+      kind: ListenerSet
+      namespace: envoy-gateway-system
+  to:
+    - group: ""
+      kind: HTTPRoute

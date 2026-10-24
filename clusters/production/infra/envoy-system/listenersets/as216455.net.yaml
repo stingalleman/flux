@@ -18,6 +18,12 @@ spec:
       protocol: HTTPS
       port: 443
       hostname: "as216455.net"
+      allowedRoutes:
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              kubernetes.io/metadata.name: default
       tls:
         mode: Terminate
         certificateRefs:

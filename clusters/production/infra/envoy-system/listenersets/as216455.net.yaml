@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=file:///Users/sting/.local/share/nvim/yaml-companion.nvim/crd-cache/admin_kluster.boem/listenersets.gateway.networking.k8s.io.json
+apiVersion: gateway.networking.k8s.io/v1
+kind: ListenerSet
+metadata:
+  name: as216455.net
+  namespace: envoy-gateway-system
+spec:
+  parentRef:
+    name: external
+    kind: Gateway
+    group: gateway.networking.k8s.io
+  listeners:
+    - name: http
+      protocol: HTTP
+      port: 80
+      hostname: "as216455.net"
+    - name: https
+      protocol: HTTPS
+      port: 443
+      hostname: "as216455.net"
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - group: ""
+            name: as216455.net-prod-tls
+            namespace: traefik
+            kind: Secret

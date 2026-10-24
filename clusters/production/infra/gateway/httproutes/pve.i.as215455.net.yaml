@@ -1,0 +1,36 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: pve-i-as216455
+  namespace: gateway
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: ListenerSet
+      name: i.as216455.net
+      namespace: gateway
+  hostnames:
+    - "pve.i.as216455.net"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - group: gateway.envoyproxy.io
+          kind: Backend
+          name: pve-backend
+---
+# yaml-language-server: $schema=file:///Users/sting/.local/share/nvim/yaml-companion.nvim/crd-cache/admin_kluster.boem/backends.gateway.envoyproxy.io.json
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
+  name: pve-backend
+  namespace: gateway
+spec:
+  endpoints:
+    - ip:
+        port: 8006
+        address: "10.10.10.2"
+  tls:
+    insecureSkipVerify: true

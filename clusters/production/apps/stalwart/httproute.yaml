@@ -22,3 +22,49 @@ spec:
         - name: stalwart
           port: 8080
           kind: Service
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: stalwart-mail
+  namespace: stalwart
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: ListenerSet
+      name: mail.as216455.net
+      namespace: gateway
+  hostnames:
+    - "mail.as216455.net"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: stalwart
+          port: 8080
+          kind: Service
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: bulwark
+  namespace: stalwart
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: ListenerSet
+      name: mail.as216455.net
+      namespace: gateway
+  hostnames:
+    - "web.mail.as216455.net"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: bulwark
+          port: 80
+          kind: Service

@@ -13,6 +13,43 @@ spec:
         namespace: flux-system
       version: "2026.5.0"
   interval: 24h
+  values:
+    authentik:
+      error_reporting:
+        enabled: false
+
+    server:
+      replicas: 2
+      resources:
+        limits:
+          memory: 1Gi
+        requests:
+          memory: 500Mi
+      route:
+        main:
+          enabled: true
+          hostnames:
+            - "auth.as216455.net"
+          parentRefs:
+            - group: "gateway.networking.k8s.io"
+              kind: ListenerSet
+              name: as216455.net
+              namespace: gateway
+    worker:
+      replicas: 1
+      resources:
+        limits:
+          memory: 500Mi
+        requests:
+          memory: 500Mi
+
+    postgresql:
+      enabled: true
+    redis:
+      enabled: true
+      master:
+        persistence:
+          enabled: false
   valuesFrom:
     - kind: Secret
       name: authentik-values

@@ -12,3 +12,8 @@ spec:
     strategy:
       name: RetryOnFailure
       retryInterval: 5m
+  values:
+    config:
+      envoyGateway:
+        extensionApis:
+          enableBackend: true

@@ -1,0 +1,35 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: ListenerSet
+metadata:
+  name: s3.i.as216455.net
+  namespace: gateway
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  parentRef:
+    name: internal
+    kind: Gateway
+    group: gateway.networking.k8s.io
+  listeners:
+    - name: https
+      protocol: HTTPS
+      port: 443
+      hostname: "s3.i.as216455.net"
+      allowedRoutes:
+        namespaces:
+          from: Same
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: s3.i.as216455.net-tls-prod
+    - name: https-wildcard
+      protocol: HTTPS
+      port: 443
+      hostname: "*.s3.i.as216455.net"
+      allowedRoutes:
+        namespaces:
+          from: Same
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: s3.i.as216455.net-tls-prod

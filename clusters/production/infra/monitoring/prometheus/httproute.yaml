@@ -17,7 +17,7 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: alertmanager-operated
+        - name: monitoring-stack-kube-prom-alertmanager
           port: 9093
           kind: Service
 ---
@@ -40,7 +40,7 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: prometheus-operated
+        - name: monitoring-stack-kube-prom-prometheus
           port: 9090
           kind: Service
 ---

@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sting-as-site
+  name: as216455-site
   namespace: default
 spec:
   selector:
-    app: sting-as-site
+    app: as216455-site
   type: ClusterIP
   sessionAffinity: None
   sessionAffinityConfig:

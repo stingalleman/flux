@@ -12,7 +12,7 @@ spec:
       match: Host(`as216455.net`)
       services:
         - kind: Service
-          name: sting-as-site
+          name: as216455-site
           namespace: default
           port: 80
       middlewares:
@@ -23,7 +23,7 @@ spec:
       match: Host(`www.as216455.net`)
       services:
         - kind: Service
-          name: sting-as-site
+          name: as216455-site
           namespace: default
           port: 80
       middlewares:
@@ -34,34 +34,12 @@ spec:
       match: Host(`tteesstt.as216455.net`)
       services:
         - kind: Service
-          name: sting-as-site
+          name: as216455-site
           namespace: default
           port: 80
       middlewares:
         - name: authentik
           namespace: traefik
-
-    # - kind: Rule
-    #   match: Host(`rpki.as216455.net`)
-    #   services:
-    #     - kind: Service
-    #       name: krill-http
-    #       namespace: default
-    #       port: 3000
-
-    #- kind: Rule
-    #  match: Host(`dns.as216455.net`)
-    #  services:
-    #    - name: poweradmin
-    #      namespace: default
-    #      port: http
-
-    #- kind: Rule
-    #  match: Host(`nms.as216455.net`)
-    #  services:
-    #    - name: librenms
-    #      namespace: monitoring
-    #      port: 8000
 
     - kind: Rule
       match: Host(`flux-webhook.as216455.net`)

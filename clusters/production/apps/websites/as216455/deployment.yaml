@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sting-as-site
+  name: as216455-site
   namespace: default
   annotations:
     reloader.stakater.com/auto: "true"
   labels:
-    app: sting-as-site
+    app: as216455-site
 spec:
   selector:
     matchLabels:
-      app: sting-as-site
+      app: as216455-site
   replicas: 3
   strategy:
     type: RollingUpdate
@@ -20,12 +20,12 @@ spec:
   template:
     metadata:
       labels:
-        app: sting-as-site
+        app: as216455-site
     spec:
       # imagePullSecrets:
       #   - name: harbor-login-secret
       containers:
-        - name: sting-as-site
+        - name: as216455-site
           image: caddy:latest
           resources:
             requests:
@@ -61,4 +61,4 @@ spec:
       volumes:
         - name: http-volume
           configMap:
-            name: sting-as-data
+            name: as216455-site-data

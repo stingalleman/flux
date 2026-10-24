@@ -31,43 +31,11 @@ spec:
           namespace: traefik
 
     - kind: Rule
-      match: Host(`tteesstt.as216455.net`)
-      services:
-        - kind: Service
-          name: as216455-site
-          namespace: default
-          port: 80
-      middlewares:
-        - name: authentik
-          namespace: traefik
-
-    - kind: Rule
       match: Host(`flux-webhook.as216455.net`)
       services:
         - name: webhook-receiver
           namespace: flux-system
           port: 80
-
-    - kind: Rule
-      match: Host(`tilesgl.as216455.net`)
-      services:
-        - name: tiles
-          namespace: traefik
-          port: 8080
-
-    - kind: Rule
-      match: Host(`tilespostserve.as216455.net`)
-      services:
-        - name: tiles
-          namespace: traefik
-          port: 8090
-
-    - kind: Rule
-      match: Host(`maputnik.as216455.net`)
-      services:
-        - name: tiles
-          namespace: traefik
-          port: 8088
 
     - kind: Rule
       match: Host(`auth.as216455.net`)

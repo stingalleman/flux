@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: routinator-vm
-  namespace: traefik
-spec:
-  type: ExternalName
-  externalName: 10.10.10.25

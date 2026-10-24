@@ -14,6 +14,17 @@ spec:
       version: "17.0.0"
   interval: 24h
   values:
+    route:
+      enabled: true
+      apiVersion: gateway.networking.k8s.io/v1
+      kind: HTTPRoute
+      hostnames:
+        - "llm.as216455.net"
+      parentRefs:
+        - kind: ListenerSet
+          name: as216455.net
+          namespace: gateway
+
     resources:
       requests:
         memory: 1000Mi

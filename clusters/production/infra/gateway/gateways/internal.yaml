@@ -6,6 +6,9 @@ metadata:
   namespace: gateway
 spec:
   gatewayClassName: envoy-gateway
+  allowedListeners:
+    namespaces:
+      from: Same
   listeners:
     - name: http
       protocol: HTTP

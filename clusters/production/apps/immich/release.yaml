@@ -95,3 +95,14 @@ spec:
       #     size: 10Gi
       #     accessMode: ReadWriteMany
       #     storageClass: ceph-rbd-pve
+
+    route:
+      main:
+        enabled: true
+        hostnames:
+          - "foto.stingalleman.nl"
+        kind: HTTPRoute
+        parentRefs:
+          - kind: ListenerSet
+            name: stingalleman.nl
+            namespac: gateway

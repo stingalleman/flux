@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=file:///Users/sting/.local/share/nvim/yaml-companion.nvim/crd-cache/admin_kluster.boem/tcproutes.gateway.networking.k8s.io.json
+apiVersion: gateway.networking.k8s.io/v1
+kind: TCPRoute
+metadata:
+  name: ldap
+  namespace: authentik
+spec:
+  parentRefs:
+    - name: internal
+      namespace: gateway
+      kind: Gateway
+      sectionName: ldap
+  rules:
+    - backendRefs:
+        - kind: Service
+          name: ak-outpost-ldap-outpost
+          port: 389
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: TCPRoute
+metadata:
+  name: ldapsecure
+  namespace: authentik
+spec:
+  parentRefs:
+    - name: internal
+      namespace: gateway
+      kind: Gateway
+      sectionName: ldapsecure
+  rules:
+    - backendRefs:
+        - kind: Service
+          name: ak-outpost-ldap-outpost
+          port: 636

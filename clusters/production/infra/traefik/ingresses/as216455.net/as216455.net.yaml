@@ -13,7 +13,7 @@ spec:
       services:
         - kind: Service
           name: as216455-site
-          namespace: default
+          namespace: websites
           port: 80
       middlewares:
         - name: hsts
@@ -24,7 +24,7 @@ spec:
       services:
         - kind: Service
           name: as216455-site
-          namespace: default
+          namespace: websites
           port: 80
       middlewares:
         - name: hsts

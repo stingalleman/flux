@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: maishond-site
-  namespace: default
+  namespace: websites
   labels:
     app: maishond-site
 spec:

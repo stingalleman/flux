@@ -13,7 +13,7 @@ spec:
       services:
         - kind: Service
           name: doubleblind-site
-          namespace: default
+          namespace: websites
           port: http
 
   tls:

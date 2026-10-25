@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: as216455-site
-  namespace: default
+  namespace: websites
   annotations:
     reloader.stakater.com/auto: "true"
   labels:

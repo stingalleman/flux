@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: stingalleman-site
-  namespace: default
+  namespace: websites
   annotations:
     reloader.stakater.com/auto: "true"
   labels:

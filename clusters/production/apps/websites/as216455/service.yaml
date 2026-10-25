@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: as216455-site
-  namespace: default
+  namespace: websites
 spec:
   selector:
     app: as216455-site

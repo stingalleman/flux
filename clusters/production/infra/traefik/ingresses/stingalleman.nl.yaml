@@ -12,8 +12,19 @@ spec:
       match: Host(`stingalleman.nl`)
       services:
         - kind: Service
-          name: sting-site
-          namespace: default
+          name: stingalleman-site
+          namespace: websites
+          port: 80
+      middlewares:
+        - name: hsts
+          namespace: traefik
+
+    - kind: Rule
+      match: Host(`www.stingalleman.nl`)
+      services:
+        - kind: Service
+          name: stingalleman-site
+          namespace: websites
           port: 80
       middlewares:
         - name: hsts

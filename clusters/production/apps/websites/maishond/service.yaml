@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: maishond-site
-  namespace: default
+  namespace: websites
 spec:
   selector:
     app: maishond-site

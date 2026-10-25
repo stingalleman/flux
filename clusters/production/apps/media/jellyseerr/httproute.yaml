@@ -9,8 +9,13 @@ spec:
       kind: ListenerSet
       name: maishond.nl
       namespace: gateway
+    - group: gateway.networking.k8s.io
+      kind: ListenerSet
+      name: stingalleman.nl
+      namespace: gateway
   hostnames:
     - "request.maishond.nl"
+    - "request.stingalleman.nl"
   rules:
     - matches:
         - path:

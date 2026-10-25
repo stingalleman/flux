@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=file:///Users/sting/.local/share/nvim/yaml-companion.nvim/crd-cache/admin_kluster.boem/gateways.gateway.networking.k8s.io.json
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: mail
+  namespace: gateway
+spec:
+  gatewayClassName: envoy-gateway
+  allowedListeners:
+    namespaces:
+      from: Same
+  listeners:
+    - name: pop3s
+      protocol: TCP
+      port: 995
+      allowedRoutes:
+        kinds:
+          - group: gateway.networking.k8s.io
+            kind: TCPRoute
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              kubernetes.io/metadata.name: stalwart
+    - name: imaps
+      protocol: TCP
+      port: 993
+      allowedRoutes:
+        kinds:
+          - group: gateway.networking.k8s.io
+            kind: TCPRoute
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              kubernetes.io/metadata.name: stalwart
+    - name: smtp
+      protocol: TCP
+      port: 25
+      allowedRoutes:
+        kinds:
+          - group: gateway.networking.k8s.io
+            kind: TCPRoute
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              kubernetes.io/metadata.name: stalwart
+    - name: smtps
+      protocol: TCP
+      port: 465
+      allowedRoutes:
+        kinds:
+          - group: gateway.networking.k8s.io
+            kind: TCPRoute
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              kubernetes.io/metadata.name: stalwart

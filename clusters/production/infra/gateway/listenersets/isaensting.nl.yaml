@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=file:///Users/sting/.local/share/nvim/yaml-companion.nvim/crd-cache/admin_kluster.boem/listenersets.gateway.networking.k8s.io.json
+apiVersion: gateway.networking.k8s.io/v1
+kind: ListenerSet
+metadata:
+  name: isaensting.nl
+  namespace: gateway
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  parentRef:
+    name: external
+    kind: Gateway
+    group: gateway.networking.k8s.io
+  listeners:
+    - name: http
+      protocol: HTTP
+      port: 80
+      hostname: "isaensting.nl"
+    - name: https
+      protocol: HTTPS
+      port: 443
+      hostname: "isaensting.nl"
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: isaensting.nl-tls-prod
+    - name: https-wildcard
+      protocol: HTTPS
+      port: 443
+      hostname: "*.isaensting.nl"
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: isaensting.nl-tls-prod

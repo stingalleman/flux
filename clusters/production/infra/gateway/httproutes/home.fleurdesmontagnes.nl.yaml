@@ -1,0 +1,22 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: home-fleurdesmontagnes
+  namespace: gateway
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: ListenerSet
+      name: fleurdesmontagnes.nl
+      namespace: gateway
+  hostnames:
+    - "home.fleurdesmontagnes.nl"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - group: gateway.envoyproxy.io
+          kind: Backend
+          name: home-stingalleman-backend

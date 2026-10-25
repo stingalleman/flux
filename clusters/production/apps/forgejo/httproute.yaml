@@ -1,0 +1,19 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: maisgit-redirect
+  namespace: forgejo
+spec:
+  parentRefs:
+    - name: maishond.nl
+      kind: ListenerSet
+  hostnames:
+    - "git.maishond.nl"
+  rules:
+    - filters:
+        - type: RequestRedirect
+          requestRedirect:
+            scheme: https
+            hostname: git.as216455.net
+            port: 443
+            statusCode: 302 # maybe change to 301 later?

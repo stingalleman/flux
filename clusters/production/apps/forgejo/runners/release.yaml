@@ -92,8 +92,9 @@ spec:
         labels:
           - ubuntu-latest:k8s:///config/podspec-default.yaml
           - default:k8s:///config/podspec-default.yaml
-          - docker:k8s:///config/podspec-dind.yaml
-        timeout: 3h
+          - docker:k8s:///config/podspec-docker.yaml
+          - docker-large:k8s:///config/podspec-docker-large.yaml
+        timeout: 4h
         shutdown_timeout: 3m
 
     # -- PodSpec files referenced by your runner labels, keyed by filename -> content (REQUIRED).
@@ -115,7 +116,7 @@ spec:
                 cpu: 4000m
                 memory: 4Gi
         restartPolicy: Never
-      podspec-dind.yaml: |
+      podspec-docker.yaml: |
         initContainers:
           - name: dind
             image: docker:29-dind
@@ -159,6 +160,60 @@ spec:
               limits:
                 cpu: 4000m
                 memory: 4Gi
+            volumeMounts:
+              - name: docker-certs
+                mountPath: /certs
+                readOnly: true
+        volumes:
+          - name: docker-storage
+            emptyDir: {}
+          - name: docker-certs
+            emptyDir: {}
+        restartPolicy: Never
+      podspec-docker-large.yaml: |
+        initContainers:
+          - name: dind
+            image: docker:29-dind
+            securityContext:
+              privileged: true
+            restartPolicy: Always
+            env:
+              - name: DOCKER_TLS_CERTDIR
+                value: /certs
+            volumeMounts:
+              - name: docker-storage
+                mountPath: /var/lib/docker
+              - name: docker-certs
+                mountPath: /certs
+            startupProbe:
+              exec:
+                command:
+                  - sh
+                  - -c
+                  - docker --tlsverify --tlscacert=/certs/client/ca.pem --tlscert=/certs/client/cert.pem --tlskey=/certs/client/key.pem -H tcp://localhost:2376 info
+              initialDelaySeconds: 5
+              periodSeconds: 1
+              failureThreshold: 30
+        containers:
+          - name: main
+            image: ghcr.io/bjw-s-labs/forgejo-runner:ubuntu-24.04
+            imagePullPolicy: IfNotPresent
+            env:
+              - name: DEBIAN_FRONTEND
+                value: noninteractive
+              - name: DOCKER_HOST
+                value: tcp://localhost:2376
+              - name: DOCKER_TLS_VERIFY
+                value: "1"
+              - name: DOCKER_CERT_PATH
+                value: /certs/client
+            resources:
+              requests:
+                cpu: 8000m
+                memory: 8Gi
+              limits:
+                cpu: 8000m
+                memory: 8Gi
             volumeMounts:
               - name: docker-certs
                 mountPath: /certs

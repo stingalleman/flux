@@ -5,7 +5,7 @@ metadata:
   namespace: stalwart
 spec:
   # imageName:
-  instances: 1
+  instances: 2
   # Example of rolling update strategy:
   # - unsupervised: automated update of the primary once all
   #                 replicas have been upgraded (default)

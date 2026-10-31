@@ -8,7 +8,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   parentRef:
-    name: external
+    name: internal
     kind: Gateway
     group: gateway.networking.k8s.io
   listeners:

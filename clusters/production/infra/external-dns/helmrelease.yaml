@@ -23,8 +23,13 @@ spec:
       - as216455.net
 
     sources:
-      - service
       - crd
+      - service
+      - gateway-grpcroute
+      - gateway-httproute
+      - gateway-tcproute
+      - gateway-tlsroute
+    enableGatewayListenerSets: true
 
     policy: sync
 

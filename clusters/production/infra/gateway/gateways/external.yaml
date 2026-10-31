@@ -15,6 +15,9 @@ spec:
     namespaces:
       from: Same
   listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
     - name: ssh
       protocol: TCP
       port: 22

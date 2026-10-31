@@ -10,6 +10,9 @@ spec:
     namespaces:
       from: Same
   listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
     - name: ldap
       protocol: TCP
       port: 9383

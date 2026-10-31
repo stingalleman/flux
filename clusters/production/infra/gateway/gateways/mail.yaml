@@ -10,6 +10,9 @@ spec:
     namespaces:
       from: Same
   listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
     - name: pop3s
       protocol: TCP
       port: 995

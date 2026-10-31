@@ -13,7 +13,7 @@ spec:
       services:
         - kind: Service
           name: maishond-site
-          namespace: default
+          namespace: websites
           port: http
 
     - kind: Rule

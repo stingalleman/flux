@@ -17,7 +17,9 @@ spec:
     provider:
       name: rfc2136
 
+    registry: txt
     txtOwnerId: ext-dns-prod
+    txtPrefix: "%{record_type}."
 
     domainFilters:
       - as216455.net

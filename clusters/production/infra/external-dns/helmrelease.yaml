@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=file:///Users/sting/.local/share/nvim/yaml-companion.nvim/crd-cache/admin_production.clusters.i.as216455.net/helmreleases.helm.toolkit.fluxcd.io.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: external-dns
+spec:
+  chart:
+    spec:
+      chart: external-dns
+      sourceRef:
+        kind: HelmRepository
+        name: external-dns
+      version: "1.23.0"
+  interval: 24h
+  values:
+    provider:
+      name: rfc2136
+
+    txtOwnerId: ext-dns-prod
+
+    domainFilters:
+      - as216455.net
+
+    sources:
+      - service
+      - ingress
+      - crd
+
+    policy: sync
+
+    # logLevel: debug
+    # interval: 10s
+
+    rbac:
+      create: true
+
+    resources:
+      requests:
+        cpu: 100m
+        memory: 64Mi
+      limits:
+        cpu: 200m
+        memory: 128Mi
+  valuesFrom:
+    - name: external-dns-values
+      kind: Secret

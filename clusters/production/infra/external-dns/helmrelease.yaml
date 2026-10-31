@@ -24,7 +24,6 @@ spec:
 
     sources:
       - service
-      - ingress
       - crd
 
     policy: sync

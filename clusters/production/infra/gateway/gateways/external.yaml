@@ -6,6 +6,11 @@ metadata:
   namespace: gateway
 spec:
   gatewayClassName: envoy-gateway
+  infrastructure:
+    labels:
+      lb-pool: external
+    annotations:
+      lbipam.cilium.io/ips: "2.27.100.103,2a07:54c7:5201:6e6f::d"
   allowedListeners:
     namespaces:
       from: Same

@@ -9,6 +9,7 @@ spec:
     - cidr: "2.27.100.100/32"
     - cidr: "2.27.100.101/32"
     - cidr: "2.27.100.102/32"
+    - cidr: "2.27.100.103/32"
     - cidr: "2a07:54c7:5201:6e6f::/64"
   serviceSelector:
     matchLabels:

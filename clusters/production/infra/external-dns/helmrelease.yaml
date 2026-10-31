@@ -21,6 +21,11 @@ spec:
 
     domainFilters:
       - as216455.net
+      - doubleblind.nl
+      - fleurdesmontagnes.nl
+      - isaensting.nl
+      # - maishond.nl
+      - stingalleman.nl
 
     sources:
       - crd

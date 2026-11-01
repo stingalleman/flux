@@ -13,6 +13,10 @@ spec:
         namespace: flux-system
       version: "37.4.0"
   interval: 24h
+  install:
+    crds: Skip
+  upgrade:
+    crds: Skip
   values:
     deployment:
       replicas: 3
@@ -35,7 +39,7 @@ spec:
         # -- Specify the allowed entrypoints to use for the dashboard ingress route, (e.g. traefik, web, websecure).
         # By default, it's using traefik entrypoint, which is not exposed.
         # /!\ Do not expose your dashboard without any protection over the internet /!\
-        entryPoints: [ "internalsecure" ]
+        entryPoints: ["internalsecure"]
         # -- Additional ingressRoute middlewares (e.g. for authentication)
         middlewares: []
         # -- TLS options (e.g. secret containing certificate)
@@ -55,7 +59,7 @@ spec:
             kind: TraefikService
         # -- Specify the allowed entrypoints to use for the healthcheck ingress route, (e.g. traefik, web, websecure).
         # By default, it's using traefik entrypoint, which is not exposed.
-        entryPoints: [ "traefik" ]
+        entryPoints: ["traefik"]
         # -- Additional ingressRoute middlewares (e.g. for authentication)
         middlewares: []
         # -- TLS options (e.g. secret containing certificate)
@@ -103,7 +107,7 @@ spec:
 
       kubernetesGateway:
         # -- Enable Traefik Gateway provider for Gateway API
-        enabled: true
+        enabled: false
         # -- Toggles support for the Experimental Channel resources (Gateway API release channels documentation).
         # This option currently enables support for TCPRoute and TLSRoute.
         experimentalChannel: false
@@ -768,17 +772,17 @@ spec:
             - IPv4
             - IPv6
         mail:
-          type: LoadBalancer
-          annotations:
-            io.cilium/lb-ipam-ips: "2.27.100.101,2a07:54c7:5201:6e6f::b"
-          labels:
-            lb-pool: external
-          spec:
-            externalTrafficPolicy: Local
-          ipFamilyPolicy: RequireDualStack
-          ipFamilies:
-            - IPv4
-            - IPv6
+          type: ClusterIP
+          # annotations:
+          #   io.cilium/lb-ipam-ips: "2.27.100.101,2a07:54c7:5201:6e6f::b"
+          # labels:
+          #   lb-pool: external
+          # spec:
+          #   externalTrafficPolicy: Local
+          # ipFamilyPolicy: RequireDualStack
+          # ipFamilies:
+          #   - IPv4
+          #   - IPv6
 
         webssh:
           type: LoadBalancer

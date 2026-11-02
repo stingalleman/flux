@@ -30,3 +30,39 @@ spec:
           selector:
             matchLabels:
               kubernetes.io/metadata.name: forgejo
+    - name: matrixrtc-tcp
+      protocol: TCP
+      port: 30001
+      allowedRoutes:
+        kinds:
+          - group: gateway.networking.k8s.io
+            kind: TCPRoute
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              kubernetes.io/metadata.name: matrix
+    - name: matrixrtc-udp
+      protocol: UDP
+      port: 30002
+      allowedRoutes:
+        kinds:
+          - group: gateway.networking.k8s.io
+            kind: UDPRoute
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              kubernetes.io/metadata.name: matrix
+    - name: mediamtx
+      protocol: UDP
+      port: 8189
+      allowedRoutes:
+        kinds:
+          - group: gateway.networking.k8s.io
+            kind: UDPRoute
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              kubernetes.io/metadata.name: default

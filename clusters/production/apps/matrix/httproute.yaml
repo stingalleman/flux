@@ -1,0 +1,228 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: matrix-element-admin
+  namespace: matrix
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: ListenerSet
+      name: matrix.maishond.nl
+      namespace: gateway
+      sectionName: https-wildcard
+  hostnames:
+    - "admin.matrix.maishond.nl"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: matrix-stack-element-admin
+          port: 8080
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: matrix-element-web
+  namespace: matrix
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: ListenerSet
+      name: maishond.nl
+      namespace: gateway
+      sectionName: https-wildcard
+  hostnames:
+    - "element.maishond.nl"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: matrix-stack-element-web
+          port: 80
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: matrix-hookshot
+  namespace: matrix
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: ListenerSet
+      name: matrix.maishond.nl
+      namespace: gateway
+      sectionName: https-wildcard
+  hostnames:
+    - "webhook.matrix.maishond.nl"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /widgetapi/v1
+      backendRefs:
+        - name: matrix-stack-hookshot
+          port: 7778
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: matrix-stack-hookshot
+          port: 7775
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: matrix-authentication-service
+  namespace: matrix
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: ListenerSet
+      name: maishond.nl
+      namespace: gateway
+      sectionName: https-wildcard
+  hostnames:
+    - "auth-matrix.maishond.nl"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: matrix-stack-matrix-authentication-service
+          port: 8080
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: matrix-rtc
+  namespace: matrix
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: ListenerSet
+      name: maishond.nl
+      namespace: gateway
+      sectionName: https-wildcard
+  hostnames:
+    - "mrtc-matrix.maishond.nl"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /sfu/get
+        - path:
+            type: PathPrefix
+            value: /get_token
+        - path:
+            type: PathPrefix
+            value: /delegate_delayed_leave
+      backendRefs:
+        - name: matrix-stack-matrix-rtc-authorisation-service
+          port: 8080
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: matrix-stack-matrix-rtc-sfu
+          port: 7880
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: matrix-synapse
+  namespace: matrix
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: ListenerSet
+      name: matrix.maishond.nl
+      namespace: gateway
+      sectionName: https
+  hostnames:
+    - "matrix.maishond.nl"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /_matrix/client/api/v1/login
+        - path:
+            type: PathPrefix
+            value: /_matrix/client/api/v1/refresh
+        - path:
+            type: PathPrefix
+            value: /_matrix/client/api/v1/logout
+        - path:
+            type: PathPrefix
+            value: /_matrix/client/r0/login
+        - path:
+            type: PathPrefix
+            value: /_matrix/client/r0/refresh
+        - path:
+            type: PathPrefix
+            value: /_matrix/client/r0/logout
+      backendRefs:
+        - name: matrix-stack-matrix-authentication-service
+          port: 8080
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /_matrix/client/v3/login
+        - path:
+            type: PathPrefix
+            value: /_matrix/client/v3/refresh
+        - path:
+            type: PathPrefix
+            value: /_matrix/client/v3/logout
+        - path:
+            type: PathPrefix
+            value: /_matrix/client/unstable/login
+        - path:
+            type: PathPrefix
+            value: /_matrix/client/unstable/refresh
+        - path:
+            type: PathPrefix
+            value: /_matrix/client/unstable/logout
+      backendRefs:
+        - name: matrix-stack-matrix-authentication-service
+          port: 8080
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /_matrix
+        - path:
+            type: PathPrefix
+            value: /_synapse
+      backendRefs:
+        - name: matrix-stack-synapse
+          port: 8008
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: matrix-well-known
+  namespace: matrix
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: ListenerSet
+      name: maishond.nl
+      namespace: gateway
+      sectionName: https
+  hostnames:
+    - "maishond.nl"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /.well-known/matrix
+      backendRefs:
+        - name: matrix-stack-well-known
+          port: 8010

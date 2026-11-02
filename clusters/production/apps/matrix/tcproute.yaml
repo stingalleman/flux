@@ -1,0 +1,15 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: TCPRoute
+metadata:
+  name: matric-rtc-tcp
+  namespace: matrix
+spec:
+  parentRefs:
+    - name: external
+      namespace: gateway
+      kind: Gateway
+      sectionName: matrixrtc-tcp
+  rules:
+    - backendRefs:
+        - name: matrix-stack-matrix-rtc-sfu-tcp
+          port: 30001

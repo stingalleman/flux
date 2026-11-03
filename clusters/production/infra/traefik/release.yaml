@@ -722,80 +722,16 @@ spec:
       ## -- Single service is using `MixedProtocolLBService` feature gate.
       ## -- When set to false, it will create two Service, one for TCP and one for UDP.
       single: false
-      type: LoadBalancer
-      # -- Additional annotations applied to both TCP and UDP services (e.g. for cloud provider specific config)
-      annotations:
-        lbipam.cilium.io/ips: "2.27.100.100,2a07:54c7:5201:6e6f::a"
-        lbipam.cilium.io/sharing-key: "8-share"
-        lbipam.cilium.io/sharing-cross-namespace: "*"
-      # -- Additional annotations for TCP service only
-      annotationsTCP: {}
-      # -- Additional annotations for UDP service only
-      annotationsUDP: {}
-      # -- Additional service labels (e.g. for filtering Service by custom labels)
-      labels:
-        lb-pool: external
-      # -- Additional entries here will be added to the service spec.
-      # -- Cannot contain type, selector or ports entries.
-      spec:
-        externalTrafficPolicy: Local
-      # loadBalancerIP: "1.2.3.4"
-      # clusterIP: "2.3.4.5"
-      loadBalancerSourceRanges: []
-      # - 192.168.0.1/32
-      # - 172.16.0.0/16
-      ## -- Class of the load balancer implementation
-      # loadBalancerClass: service.k8s.aws/nlb
-      externalIPs: []
-      # - 1.2.3.4
-      ## One of SingleStack, PreferDualStack, or RequireDualStack.
-      ipFamilyPolicy: RequireDualStack
-      ## List of IP families (e.g. IPv4 and/or IPv6).
-      ## ref: https://kubernetes.io/docs/concepts/services-networking/dual-stack/#services
-      ipFamilies:
-        - IPv4
-        - IPv6
-      ##
+      type: ClusterIP
       additionalServices:
         ## -- An additional and optional internal Service.
         ## Same parameters as external Service
         internal:
-          type: LoadBalancer
-          annotations:
-            io.cilium/lb-ipam-ips: "10.10.102.250,2a07:54c7:5201:7e6f::2000"
-          labels:
-            lb-pool: external
-          spec:
-            externalTrafficPolicy: Local
-          ipFamilyPolicy: RequireDualStack
-          ipFamilies:
-            - IPv4
-            - IPv6
+          type: ClusterIP
         mail:
           type: ClusterIP
-          # annotations:
-          #   io.cilium/lb-ipam-ips: "2.27.100.101,2a07:54c7:5201:6e6f::b"
-          # labels:
-          #   lb-pool: external
-          # spec:
-          #   externalTrafficPolicy: Local
-          # ipFamilyPolicy: RequireDualStack
-          # ipFamilies:
-          #   - IPv4
-          #   - IPv6
-
         webssh:
-          type: LoadBalancer
-          annotations:
-            io.cilium/lb-ipam-ips: "2.27.100.102,2a07:54c7:5201:6e6f::c"
-          labels:
-            lb-pool: external
-          spec:
-            externalTrafficPolicy: Local
-          ipFamilyPolicy: RequireDualStack
-          ipFamilies:
-            - IPv4
-            - IPv6
+          type: ClusterIP
 
     autoscaling:
       # -- Create HorizontalPodAutoscaler object.

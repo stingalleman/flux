@@ -4,6 +4,8 @@ kind: Gateway
 metadata:
   name: external
   namespace: gateway
+  annotations:
+    external-dns.kubernetes.io/target: 2.27.100.100,2a07:54c7:5201:6e6f::a
 spec:
   gatewayClassName: envoy-gateway
   infrastructure:

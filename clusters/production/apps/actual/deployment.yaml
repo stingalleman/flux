@@ -28,7 +28,7 @@ spec:
       # - Each init container must complete successfully before the next one starts.
       containers:
         - name: actual-budget
-          image: actualbudget/actual-server:26.10.0
+          image: actualbudget/actual-server:26.11.0@sha256:06cf186569cf58d93e12659ff1a517b65b5b0ebee7050a3991d4bd8a1d398da6
           imagePullPolicy: Always
           # resources:
           # requests:

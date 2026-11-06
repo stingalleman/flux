@@ -1,9 +1,0 @@
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: hsts
-  namespace: traefik
-spec:
-  headers:
-    stsSeconds: 31536000 # one year
-    stsIncludeSubdomains: false

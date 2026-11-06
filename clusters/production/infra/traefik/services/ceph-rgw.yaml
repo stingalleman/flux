@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: ceph-rgw
-  namespace: traefik
-spec:
-  type: ExternalName
-  externalName: 10.176.70.1

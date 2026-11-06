@@ -12,6 +12,7 @@ spec:
     strategy:
       name: RetryOnFailure
       retryInterval: 5m
+    crds: CreateReplace
   values:
     config:
       envoyGateway:

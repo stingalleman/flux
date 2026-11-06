@@ -11,11 +11,8 @@ spec:
   interval: 24h
   values:
     serverName: maishond.nl
-    ingress:
-      className: traefik-ingress
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      tlsSecret: maishond.nl-prod-tls
+
+    inboundTrafficHandler: none
 
     synapse:
       enabled: true

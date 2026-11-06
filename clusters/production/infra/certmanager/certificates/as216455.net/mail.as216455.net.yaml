@@ -12,18 +12,3 @@ spec:
   dnsNames:
     - "mail.as216455.net"
     - "*.mail.as216455.net"
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: mail.as216455.net
-  namespace: traefik
-spec:
-  secretName: mail.as216455.net-prod-tls
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
-  commonName: "mail.as216455.net"
-  dnsNames:
-    - "mail.as216455.net"
-    - "*.mail.as216455.net"

@@ -2,24 +2,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jellyseerr
+  name: seerr
   namespace: media
   labels:
-    app: jellyseerr
+    app: seerr
 spec:
   selector:
     matchLabels:
-      app: jellyseerr
+      app: seerr
   replicas: 1
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: jellyseerr
+        app: seerr
     spec:
       containers:
-        - name: jellyseerr
+        - name: seerr
           image: ghcr.io/seerr-team/seerr:latest
           resources:
             requests:

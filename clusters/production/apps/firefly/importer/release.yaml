@@ -17,14 +17,8 @@ spec:
     replicaCount: 1
 
     httpRoute:
-      enabled: true
-      hostnames:
-        - firefly-importer.i.as216455.net
-      parentRefs:
-        - group: gateway.networking.k8s.io
-          kind: ListenerSet
-          name: i.as216455.net
-          namespace: gateway
+      enabled: false
+      # managed via authentik proxy
 
     # -- The proxies that are trusted by the importer
     trustedProxies: "**"

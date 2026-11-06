@@ -17,3 +17,8 @@ metadata:
   namespace: envoy-gateway-system
 spec:
   ipFamily: DualStack
+  provider:
+    type: Kubernetes
+    kubernetes:
+      envoyDeployment:
+        replicas: 2

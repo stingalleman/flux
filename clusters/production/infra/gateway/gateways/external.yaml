@@ -10,6 +10,7 @@ spec:
   gatewayClassName: envoy-gateway
   infrastructure:
     annotations:
+      # TODO: remove .103, ::d and sharing annotations
       lbipam.cilium.io/ips: 2.27.100.100,2a07:54c7:5201:6e6f::a,2.27.100.103,2a07:54c7:5201:6e6f::d
       lbipam.cilium.io/sharing-cross-namespace: "*"
       lbipam.cilium.io/sharing-key: 8-share

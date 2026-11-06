@@ -9,7 +9,6 @@ spec:
   scrapeInterval: 5s
   staticConfigs:
     - labels:
-        job: node-exporter
+        job: node-exporter-pve
       targets:
         - "10.10.10.2:9100"
-        - "10.10.10.21:9100"

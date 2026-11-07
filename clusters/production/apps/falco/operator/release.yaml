@@ -1,20 +1,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: falco
-  namespace: falco
+  name: falco-operator
+  namespace: falco-operator
 spec:
   chart:
     spec:
-      chart: falco
+      chart: falco-operator
       sourceRef:
         kind: HelmRepository
         name: falcosecurity
       # version: "1.10.2"
   interval: 24h
-  values:
-    tty: true
-    falcosidekick:
-      enabled: true
-      webui:
-        enabled: true

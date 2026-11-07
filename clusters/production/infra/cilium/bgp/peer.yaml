@@ -1,25 +1,56 @@
-# yaml-language-server: $schema=schemas/CiliumBGPPeeringPolicy.json
-apiVersion: "cilium.io/v2alpha1"
-kind: CiliumBGPPeeringPolicy
+apiVersion: cilium.io/v2
+kind: CiliumBGPClusterConfig
 metadata:
   name: bgp-peer0
 spec:
   nodeSelector:
     matchLabels:
       bgp_enabled: "true"
-  virtualRouters:
-    - localASN: 65500
-      exportPodCIDR: false
-      neighbors:
-        - peerAddress: "2a07:54c7:5201:7377::1/64"
+  bgpInstances:
+    - name: asn-65500
+      localASN: 65500
+      peers:
+        - name: rtr01
+          peerAddress: "2a07:54c7:5201:7377::1"
           peerASN: 216455
-          # eBGPMultihopTTL: 10
-          # connectRetryTimeSeconds: 120
-          # holdTimeSeconds: 90
-          # keepAliveTimeSeconds: 30
-          gracefulRestart:
-            enabled: true
-            restartTimeSeconds: 120
-      serviceSelector:
+          peerConfigRef:
+            name: bgp-peer0
+---
+apiVersion: cilium.io/v2
+kind: CiliumBGPPeerConfig
+metadata:
+  name: bgp-peer0
+spec:
+  gracefulRestart:
+    enabled: true
+    restartTimeSeconds: 120
+  families:
+    - afi: ipv4
+      safi: unicast
+      advertisements:
+        matchLabels:
+          advertise: bgp-peer0
+    - afi: ipv6
+      safi: unicast
+      advertisements:
+        matchLabels:
+          advertise: bgp-peer0
+---
+apiVersion: cilium.io/v2
+kind: CiliumBGPAdvertisement
+metadata:
+  name: bgp-peer0
+  labels:
+    advertise: bgp-peer0
+spec:
+  advertisements:
+    - advertisementType: Service
+      service:
+        addresses:
+          - LoadBalancerIP
+      selector:
         matchExpressions:
-          - { key: somekey, operator: NotIn, values: ["never-used-value"] }
+          - key: somekey
+            operator: NotIn
+            values:
+              - never-used-value

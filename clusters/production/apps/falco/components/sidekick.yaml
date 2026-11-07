@@ -1,0 +1,9 @@
+apiVersion: instance.falcosecurity.dev/v1alpha1
+kind: Component
+metadata:
+  name: sidekick
+  namespace: falco
+spec:
+  component:
+    type: falcosidekick
+  replicas: 2

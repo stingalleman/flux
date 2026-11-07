@@ -1,0 +1,12 @@
+apiVersion: artifact.falcosecurity.dev/v1alpha1
+kind: Plugin
+metadata:
+  name: k8saudit
+  namespace: falco
+spec:
+  ociArtifact:
+    image:
+      repository: falcosecurity/plugins/plugin/k8saudit
+      tag: latest
+    registry:
+      name: ghcr.io

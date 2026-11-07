@@ -14,3 +14,7 @@ spec:
   interval: 24h
   values:
     tty: true
+    falcosidekick:
+      enabled: true
+      webui:
+        enabled: true

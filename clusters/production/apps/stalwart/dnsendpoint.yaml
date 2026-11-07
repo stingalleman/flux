@@ -1,0 +1,13 @@
+---
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: as216455.net-mailshield
+  namespace: gateway
+spec:
+  endpoints:
+    - dnsName: _mailshield.as216455.net
+      recordTTL: 300
+      recordType: TXT
+      targets:
+        - mailshield-verify=BBSgVW3venl_akJR8WYKhIwni3KmddH-

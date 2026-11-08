@@ -19,4 +19,16 @@ spec:
       backendRefs:
         - group: gateway.envoyproxy.io
           kind: Backend
-          name: home-stingalleman-backend
+          name: home-fleurdesmontagnes-backend
+---
+# yaml-language-server: $schema=file:///Users/sting/.local/share/nvim/yaml-companion.nvim/crd-cache/admin_kluster.boem/backends.gateway.envoyproxy.io.json
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
+  name: home-fleurdesmontagnes-backend
+  namespace: gateway
+spec:
+  endpoints:
+    - ip:
+        port: 80
+        address: "86.94.42.41"

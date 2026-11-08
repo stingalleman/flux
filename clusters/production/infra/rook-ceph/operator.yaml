@@ -11,7 +11,7 @@ spec:
         kind: HelmRepository
         name: rook-release
         namespace: flux-system
-      version: "v1.17.9"
+      version: "v1.18.11"
   interval: 24h
   values:
     # crds:

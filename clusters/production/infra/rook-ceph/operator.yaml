@@ -11,7 +11,7 @@ spec:
         kind: HelmRepository
         name: rook-release
         namespace: flux-system
-      version: "v1.19.12"
+      version: "v1.20.10"
   interval: 24h
   values:
     # crds:
@@ -25,38 +25,6 @@ spec:
 
     # -- Whether the operator should watch cluster CRD in its own namespace or not
     currentNamespaceOnly: false
-
-    # Settings for whether to disable the drivers or other daemons if they are not
-    # needed
-    csi:
-      # -- Enable host networking for CSI CephFS and RBD nodeplugins. This may be necessary
-      # in some network configurations where the SDN does not provide access to an external cluster or
-      # there is significant drop in read/write performance
-      enableCSIHostNetwork: true
-      # -- Enable Snapshotter in CephFS provisioner pod
-      enableCephfsSnapshotter: true
-      # -- Enable Snapshotter in NFS provisioner pod
-      enableNFSSnapshotter: true
-      # -- Enable Snapshotter in RBD provisioner pod
-      enableRBDSnapshotter: true
-      # -- Enable Ceph CSI PVC encryption support
-      enableCSIEncryption: false
-
-      pluginTolerations:
-        - key: "dedicated"
-          operator: "Equal"
-          value: "gpu"
-          effect: "NoSchedule"
-
-      provisionerTolerations:
-        - key: "dedicated"
-          operator: "Equal"
-          value: "gpu"
-          effect: "NoSchedule"
-
-      nfs:
-        # -- Enable the nfs csi driver
-        enabled: false
 
     discover:
       tolerations:

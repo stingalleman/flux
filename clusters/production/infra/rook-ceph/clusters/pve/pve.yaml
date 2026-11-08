@@ -23,6 +23,7 @@ spec:
     # -- Cluster configuration.
     # @default -- See [below](#ceph-cluster-spec)
     cephClusterSpec:
+      skipUpgradeChecks: true
       external:
         enable: true
       # cephVersion:

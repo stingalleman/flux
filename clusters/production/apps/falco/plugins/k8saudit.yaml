@@ -10,3 +10,5 @@ spec:
       tag: latest
     registry:
       name: ghcr.io
+  config:
+    openParams: "http://:9765/k8s-audit"

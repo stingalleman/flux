@@ -26,6 +26,40 @@ spec:
           resources:
             requests:
               storage: 50Gi
+      route:
+        enabled: true
+        hostnames:
+          - vmsingle.monitoring.i.as216455.net
+        parentRefs:
+          - group: gateway.networking.k8s.io
+            kind: ListenerSet
+            name: monitoring.i.as216455.net
+            namespace: gateway
+
+    # local metrics collector
+    vmagent:
+      enabled: true
+      route:
+        enabled: true
+        hostnames:
+          - vmagent.monitoring.i.as216455.net
+        parentRefs:
+          - group: gateway.networking.k8s.io
+            kind: ListenerSet
+            name: monitoring.i.as216455.net
+            namespace: gateway
+
+    vmalert:
+      enabled: true
+      route:
+        enabled: true
+        hostnames:
+          - vmalert.monitoring.i.as216455.net
+        parentRefs:
+          - group: gateway.networking.k8s.io
+            kind: ListenerSet
+            name: monitoring.i.as216455.net
+            namespace: gateway
 
     vlsingle:
       enabled: true
@@ -36,10 +70,15 @@ spec:
           resources:
             requests:
               storage: 50Gi
-
-    # local metrics collector
-    vmagent:
-      enabled: true
+      route:
+        enabled: true
+        hostnames:
+          - vlsingle.monitoring.i.as216455.net
+        parentRefs:
+          - group: gateway.networking.k8s.io
+            kind: ListenerSet
+            name: monitoring.i.as216455.net
+            namespace: gateway
 
     # logs collector
     vlagent:
@@ -47,6 +86,34 @@ spec:
       spec:
         k8sCollector:
           enabled: true
+      route:
+        enabled: true
+        hostnames:
+          - vlagent.monitoring.i.as216455.net
+        parentRefs:
+          - group: gateway.networking.k8s.io
+            kind: ListenerSet
+            name: monitoring.i.as216455.net
+            namespace: gateway
+
+    vtsingle:
+      enabled: true
+      spec:
+        retentionPeriod: "30d"
+        storage:
+          storageClassName: ceph-rbd-pve-unreplicated
+          resources:
+            requests:
+              storage: 50Gi
+      route:
+        enabled: true
+        hostnames:
+          - vtsingle.monitoring.i.as216455.net
+        parentRefs:
+          - group: gateway.networking.k8s.io
+            kind: ListenerSet
+            name: monitoring.i.as216455.net
+            namespace: gateway
 
     victoria-metrics-operator:
       env:
@@ -61,3 +128,25 @@ spec:
         enabled: true
         storageClassName: ceph-rbd-pve-unreplicated
         size: 5Gi
+      route:
+        main:
+          enabled: true
+          kind: HTTPRoute
+          hostnames:
+            - grafana.monitoring.i.as216455.net
+          parentRefs:
+            - group: gateway.networking.k8s.io
+              kind: ListenerSet
+              name: monitoring.i.as216455.net
+              namespace: gateway
+
+    alertmanager:
+      route:
+        enabled: true
+        hostnames:
+          - alertmanager.monitoring.i.as216455.net
+        parentRefs:
+          - group: gateway.networking.k8s.io
+            kind: ListenerSet
+            name: monitoring.i.as216455.net
+            namespace: gateway

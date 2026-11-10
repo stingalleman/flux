@@ -1,0 +1,63 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  # cannot be "victoria-metrics-k8s-stack" because of job.batch
+  # "victoria-metrics-k8s-stack-victoria-metrics-operator-cleanup-hook" is invalid:
+  # spec.template.labels: Invalid value: "victoria-metrics-k8s-stack-victoria-metrics-operator-cleanup-hook":
+  # must be no more than 63 bytes
+  name: vm-stack
+  namespace: victoriametrics
+spec:
+  chart:
+    spec:
+      chart: victoria-metrics-k8s-stack
+      sourceRef:
+        kind: HelmRepository
+        name: victoria-metrics
+      version: 0.96.1
+  interval: 30s
+  values:
+    vmsingle:
+      enabled: true
+      spec:
+        retentionPeriod: "30d"
+        storage:
+          storageClassName: ceph-rbd-pve-unreplicated
+          resources:
+            requests:
+              storage: 50Gi
+
+    vlsingle:
+      enabled: true
+      spec:
+        retentionPeriod: "30d"
+        storage:
+          storageClassName: ceph-rbd-pve-unreplicated
+          resources:
+            requests:
+              storage: 50Gi
+
+    # local metrics collector
+    vmagent:
+      enabled: true
+
+    # logs collector
+    vlagent:
+      enabled: true
+      spec:
+        k8sCollector:
+          enabled: true
+
+    victoria-metrics-operator:
+      env:
+        - name: VM_ENABLESTRICTSECURITY
+          value: "true"
+
+    grafana:
+      plugins:
+        - victoriametrics-metrics-datasource
+        - victoriametrics-logs-datasource
+      persistence:
+        enabled: true
+        storageClassName: ceph-rbd-pve-unreplicated
+        size: 5Gi

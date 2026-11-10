@@ -17,8 +17,8 @@ spec:
       - dns01:
           rfc2136:
             nameserver: 10.10.10.12
-            tsigKeyName: certmanager-key
-            tsigAlgorithm: HMACMD5
+            tsigKeyName: certmanager
+            tsigAlgorithm: HMACSHA512
             tsigSecretSecretRef:
               name: certmanager-pdns-key
               key: key

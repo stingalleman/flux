@@ -11,7 +11,7 @@ spec:
         kind: HelmRepository
         name: openwebui
         namespace: openwebui
-      version: "18.0.0"
+      version: "18.3.0"
   interval: 24h
   values:
     route:

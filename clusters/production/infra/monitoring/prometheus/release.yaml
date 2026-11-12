@@ -110,3 +110,7 @@ spec:
       enabled: true
       endpoints:
         - 10.10.102.11
+    alertManager:
+      enabled: false
+    nodeExporter:
+      enabled: false

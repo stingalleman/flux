@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: profilarr
-          image: ghcr.io/dictionarry-hub/profilarr:2.2.0
+          image: ghcr.io/dictionarry-hub/profilarr:2.3.1@sha256:352e42dec74ecfd68d13bb198fbc6d9346e3a8c55003026e1814e59319a2176d
           ports:
             - containerPort: 6868
               name: http

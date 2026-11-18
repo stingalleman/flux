@@ -3,4 +3,81 @@ kind: Central
 metadata:
   name: stackrox-central-services
   namespace: stackrox
-spec: {}
+spec:
+  central:
+    resources:
+      requests:
+        cpu: 500m
+        memory: 1Gi
+      limits:
+        cpu: "2"
+        memory: 4Gi
+    db:
+      resources:
+        requests:
+          cpu: 500m
+          memory: 1Gi
+        limits:
+          cpu: "2"
+          memory: 4Gi
+
+  scanner:
+    scannerComponent: Enabled
+    analyzer:
+      scaling:
+        autoScaling: Disabled
+        replicas: 1
+        minReplicas: 1
+        maxReplicas: 1
+      resources:
+        requests:
+          cpu: 250m
+          memory: 512Mi
+        limits:
+          cpu: "2"
+          memory: 2500Mi
+    db:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: "1"
+          memory: 1Gi
+
+  scannerV4:
+    scannerComponent: Enabled
+    indexer:
+      scaling:
+        autoScaling: Disabled
+        replicas: 1
+        minReplicas: 1
+        maxReplicas: 1
+      resources:
+        requests:
+          cpu: 250m
+          memory: 512Mi
+        limits:
+          cpu: "2"
+          memory: 2Gi
+    matcher:
+      scaling:
+        autoScaling: Disabled
+        replicas: 1
+        minReplicas: 1
+        maxReplicas: 1
+      resources:
+        requests:
+          cpu: 250m
+          memory: 1Gi
+        limits:
+          cpu: "2"
+          memory: 4Gi
+    db:
+      resources:
+        requests:
+          cpu: 500m
+          memory: 2Gi
+        limits:
+          cpu: "2"
+          memory: 4Gi

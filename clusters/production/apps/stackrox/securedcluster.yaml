@@ -1,0 +1,24 @@
+apiVersion: platform.stackrox.io/v1alpha1
+kind: SecuredCluster
+metadata:
+  name: stackrox-secured-cluster-services
+  namespace: stackrox
+spec:
+  clusterName: production
+  sensor:
+    resources:
+      requests:
+        cpu: 250m
+        memory: 512Mi
+      limits:
+        cpu: "2"
+        memory: 2Gi
+
+  admissionControl:
+    enforcement: Disabled
+
+  scanner:
+    scannerComponent: Disabled
+
+  scannerV4:
+    scannerComponent: Disabled

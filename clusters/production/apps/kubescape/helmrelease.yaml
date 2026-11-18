@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=file:///Users/sting/.local/share/nvim/yaml-companion.nvim/crd-cache/admin_production.clusters.i.as216455.net/helmreleases.helm.toolkit.fluxcd.io.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kubescape
+  namespace: kubescape
+spec:
+  chart:
+    spec:
+      chart: kubescape-operator
+      sourceRef:
+        kind: HelmRepository
+        name: kubescape
+      version: latest
+  interval: 24h
+  values:
+    capabilities:
+      continuousScan: enable

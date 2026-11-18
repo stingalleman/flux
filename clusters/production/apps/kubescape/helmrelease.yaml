@@ -11,8 +11,9 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: kubescape
-      version: latest
+      version: "1.42.0"
   interval: 24h
   values:
     capabilities:
       continuousScan: enable
+      networkPolicyService: enable

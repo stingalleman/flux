@@ -1,0 +1,23 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: stackrox-operator
+  namespace: stackrox-operator-system
+spec:
+  chart:
+    spec:
+      chart: stackrox-operator
+      version: "4.11.6"
+      interval: 1h
+      sourceRef:
+        kind: HelmRepository
+        name: stackrox
+  interval: 24h
+  install:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3

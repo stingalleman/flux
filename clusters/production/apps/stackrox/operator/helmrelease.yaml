@@ -7,7 +7,7 @@ spec:
   chart:
     spec:
       chart: stackrox-operator
-      version: "4.11.6"
+      version: "5.0.0"
       interval: 1h
       sourceRef:
         kind: HelmRepository

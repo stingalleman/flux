@@ -17,3 +17,7 @@ spec:
     capabilities:
       continuousScan: enable
       networkPolicyService: enable
+    defaultFrameworks:
+      - allcontrols
+      - nsa
+      - mitre

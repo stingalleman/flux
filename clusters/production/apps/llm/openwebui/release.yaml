@@ -1,47 +1,47 @@
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
-metadata:
-  name: openwebui
-  namespace: openwebui
-spec:
-  chart:
-    spec:
-      chart: open-webui
-      sourceRef:
-        kind: HelmRepository
-        name: openwebui
-        namespace: openwebui
-      version: "18.0.0"
-  interval: 24h
-  values:
-    route:
-      enabled: true
-      apiVersion: gateway.networking.k8s.io/v1
-      kind: HTTPRoute
-      hostnames:
-        - "llm.as216455.net"
-      parentRefs:
-        - kind: ListenerSet
-          name: as216455.net
-          namespace: gateway
-
-    resources:
-      requests:
-        memory: 1000Mi
-        cpu: 500m
-      limits:
-        memory: 3000Mi
-        cpu: 2000m
-
-    websocket:
-      redis:
-        resources:
-          requests:
-            memory: 250Mi
-            cpu: 250m
-          limits:
-            memory: 500Mi
-            cpu: 500m
-
-    ollama:
-      enabled: false
+# apiVersion: helm.toolkit.fluxcd.io/v2
+# kind: HelmRelease
+# metadata:
+#   name: openwebui
+#   namespace: openwebui
+# spec:
+#   chart:
+#     spec:
+#       chart: open-webui
+#       sourceRef:
+#         kind: HelmRepository
+#         name: openwebui
+#         namespace: openwebui
+#       version: "18.0.0"
+#   interval: 24h
+#   values:
+#     route:
+#       enabled: true
+#       apiVersion: gateway.networking.k8s.io/v1
+#       kind: HTTPRoute
+#       hostnames:
+#         - "llm.as216455.net"
+#       parentRefs:
+#         - kind: ListenerSet
+#           name: as216455.net
+#           namespace: gateway
+#
+#     resources:
+#       requests:
+#         memory: 1000Mi
+#         cpu: 500m
+#       limits:
+#         memory: 3000Mi
+#         cpu: 2000m
+#
+#     websocket:
+#       redis:
+#         resources:
+#           requests:
+#             memory: 250Mi
+#             cpu: 250m
+#           limits:
+#             memory: 500Mi
+#             cpu: 500m
+#
+#     ollama:
+#       enabled: false

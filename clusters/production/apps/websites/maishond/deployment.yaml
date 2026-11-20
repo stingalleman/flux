@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: maishond-site
-          image: ghcr.io/maishond/maishond.nl@sha256:fd7a6a74bb18831963c5f97cb27f4deb2f9999d0cf71cc6c3bae6e5b2d85d2dc
+          image: ghcr.io/maishond/maishond.nl@sha256:c7a87dc5e5aa1237af9adbc6d24fe3568568a3fb04f2a055d0206a64976a80bb
           ports:
             - containerPort: 8080
               name: http

@@ -36,7 +36,7 @@ spec:
         fsGroup: 999
       containers:
         - name: valkey
-          image: valkey/valkey:9-alpine@sha256:a0dbf4c1d5708782907c10e2c72deff317518518b5288a58416981d9db95d30b
+          image: valkey/valkey:9-alpine@sha256:c8e2d17498838af5d91e12eb7c11220b3434a7b7131a333e3af52ad5e0b80882
           args:
             - --appendonly
             - "yes"

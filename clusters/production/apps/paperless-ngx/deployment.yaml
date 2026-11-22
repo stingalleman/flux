@@ -36,8 +36,8 @@ spec:
               value: "2"
             - name: PAPERLESS_REDIS
               value: redis://valkey:6379
-            - name: ALLOWED_HOSTS
-              value: "10.0.0.0/8"
+            - name: PAPERLESS_ALLOWED_HOSTS
+              value: "*"
           envFrom:
             - secretRef:
                 name: paperless-ngx-env

@@ -14,7 +14,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: victoria-metrics
-      version: 0.99.0
+      version: 0.99.1
   interval: 30s
   values:
     vmsingle:
